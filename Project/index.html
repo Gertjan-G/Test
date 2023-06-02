@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interactive Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- laad Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous" rel="stylesheet">
+
+  <!-- laad Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+
+  <!-- laad MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+
+  <!-- laad  CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+   <!-- laad jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+  <!-- laad Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+          integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+  
+  <!-- laad MarkerClusterGroup -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+
+  <!-- Leaflet.easyPrint  -->
+  <script src="data/leaflet-easyPrint/dist/bundle.js"></script>
+ 
+</head>
+
+  <body>
+    <div class="container "></div>
+    <header>
+    <nav class="navbar navbar-light  shadow bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="data/img/teccon.png" alt="Logo" width="92" height="80" class=".d-inline-block" style="padding-left: 12px; font-size: large;">
+        Vergelijkingspunten
+        </a>
+        <a class="nav-link active" aria-current="page" href="" id="download-csv">Download data</a>
+        <a class="nav-link"  id="info-btn" href="#">Info</a>
+        <div class="modal fade" id="info-modal" tabindex="-1" aria-labelledby="info-modal-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="info-modal-label">Opzoeken van vergelijkingspunten.</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p>Deze website helpt gebruikers bij het filteren van vastgoeddata die is verzameld op "Biddit" op basis van specifieke criteria. 
+                  <br> <br>Gebruikers kunnen type vastgoed, status, prijsklassen en grondoppervlakten selecteren en zoeken op basis van een specifiek adres en maximale afstand. 
+                  <br><br>De website  filtert de resultaten op basis van de gekozen criteria. Vervolgens  worden de resultaten die voldoen aan alle geselecteerde filters aan de gebruiker gepresenteerd op de kaart en als dataset.
+                  <br><br>Als laatste kunnen de gefilterde data naar de gebruiker gestuurd als een nieuw CSV-bestand door op "download data" te klikken 
+                  <br><br>Samenvattende info werkt enkel voor vastgoedobjecten binnen Vlaanderen!
+                </p>
+              </div> 
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+         </li>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" id="search-adres" placeholder="Valentin Vaerwyckweg 1 9000 Gent" aria-label="search-adres">
+          <button class="btn btn-outline-success" type="button" id="search-button">Search</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+</div>
+
+
+<!--Filter systeem-->
+    <div class="row pt-4">
+      <div class=" col-1  " ></div>
+      <div class="col-3 col-md-3 p-4 shadow bg-white rounded">
+        <form id="filter-form">
+          <div class="form-group">
+            <label for="selected-dataset">Dataset:</label>
+            <br>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-radio active">
+                <input type="radio" name="options" id="dataset-all" autocomplete="off" checked> Alle
+              </label>
+              <label class="btn btn-radio">
+                <input type="radio" name="options" id="dataset-biddit" autocomplete="off"> Biddit
+              </label>
+              <label class="btn btn-radio">
+                <input type="radio" name="options" id="dataset-immoweb" autocomplete="off"> Immoweb
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="min-price">Price Range:</label>
+            <div class="d-flex">
+              <input class="form-control me-2" id="min-price" type="number" min="0" placeholder="Min">
+              <input class="form-control" id="max-price" type="number" min="0" placeholder="Max">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Grondoppervlaktea">Grondoppervlakte (min-max):</label>
+            <div class="d-flex">
+              <input class="form-control me-2" id="min-ground-area" type="number" min="0" placeholder="Min">
+              <input class="form-control" id="max-ground-area" type="number" min="0" placeholder="Max">
+            </div>
+          </div> 
+
+          <div class="form-group">
+            <label for="selected-date">Datum (tussen):</label>
+            <div class="d-flex">
+              <input class="form-control me-2"   id="start_date"  type="date"  name="start_date">
+              <input class="form-control" id="end_date" type="date"  name="end_date">
+            </div>
+          </div>
+                   
+          <div class="form-group">
+            <label><br>Type vastgoed:</label>
+            <div>
+              <input type="checkbox" class="form-check-input" name="type-vastgoed" id="type-huis" value="Huis">
+              <label class="form-check-label" for="type-huis">Huis</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input" name="type-vastgoed" id="type-villa" value="Villa">
+              <label class="form-check-label" for="type-villa">Villa</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input"  name="type-vastgoed" id="type-appartement" value="Appartement">
+              <label class="form-check-label" for="type-appartement">Appartement</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input" name="type-vastgoed" id="type-grond" value="Grond">
+              <label class="form-check-label" for="type-grond">Grond</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input" name="type-vastgoed" id="type-landbouwgrond" value="Landbouwgrond">
+              <label class="form-check-label" for="type-landbouwgrond">Landbouwgrond</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-check-input" name="type-vastgoed" id="type-Ander" value="Ander">
+              <label class="form-check-label" for="type-Ander">Andere Grond</label>
+            </div>
+
+           
+            
+            
+            
+            <div class="mb-3">
+              <label for="radius" class="form-label"><br>Zoekradius (km):</label>
+              <input type="range" id="radius" class="form-range" min="0" max="30" step="0.1" value="2" oninput="updateRadius(this.value)">
+              <div id="radius-value" class="mt-2"> </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="button" id="filter">Apply</button>
+          <button class="btn btn-secondary" type="reset" id ="reset">Reset</button>
+        </form>
+      </div>
+
+      <!--kaartje -->
+      <div class= "col- col-md-7">
+        <div id="map" class="rounded shadow" style="height: 850px"></div>
+      </div>
+      <div class=" col-1 col-md-1 " ></div>
+    </div>
+
+    
+<!-- JSON Data Table Biddit-->
+<div class="row pt-4 pb-4 hide-table1" id="table-wrapper-Biddit" hidden>
+  <div class="col-1"></div>
+    <div class=" col-10 shadow p-4 bg-white rounded table-wrapper">
+      <h4 class="table-title">Biddit: </h4>
+      <table class="table table-striped table-responsive responsive-table">
+          <thead>
+            <tr>
+              <th>Type Vastgoed</th>
+              <th>Prijs</th>
+              <th>Oppervlakte</th>
+              <th>Beschrijving</th>
+              <th>Aantal Slaapkamers</th>
+              <th>Aantal Badkamers</th>
+              <th>KI</th>
+              <th>Adres</th>
+              <th>Soort Verkoop</th>
+              <th>Laatst Gezien</th>
+              <th>Status</th>
+             </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- JS zal de tabel hier toevoegen. -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    
+
+
+    <!-- JSON Data Table Immoweb-->
+    <div class="row pt-4 pb-4 hide-table2" id="table-wrapper-Immoweb" hidden>
+      <div class="col-1"></div>
+    <div class=" col-10 shadow p-4 bg-white rounded table-wrapper">
+      <h4 class="table-title">Immoweb: </h4>
+      <table class="table table-striped table-responsive responsive-table">
+          <thead>
+            <tr>
+              <th>Type Vastgoed</th>
+              <th>Prijs</th>
+              <th>Oppervlakte</th>
+              <th>Beschrijving</th>
+              <th>Adres</th>
+              <th>Laatst Gezien</th>
+              </tr>
+          </thead>
+          <tbody id="table-body-Immoweb">
+            <!-- JS zal de tabel hier toevoegen. -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  
+
+    <!--statistieken -->
+    <div class="row pt-4 ">
+      <div class="col-1 col-md-1"></div>
+      <div class="col-5 col-md-5 p-4 shadow rounded">
+        <div class="chart-wrapper rounded">
+          <div class="col-12 ">
+              <div class="chart-container " style="position: relative; width:100%">
+                <canvas id="priceIndexChart"></canvas>
+              </div>
+            </div>
+        </div>
+      </div>
+
+        <!--Samenvatting Info -->
+        <div class="col-12 col-md-5">
+          <div class="shadow p-3 bg-white rounded">
+            <H3>Samenvattende info:</h3> 
+            <div>
+              <b>
+                Adres: </b><span id="adres"></span>
+                <br>
+                <b>Kadastrale gegevens: </b><span id="Kadaster"></span>
+                <br>
+                <b>Volgens gewestplan: </b><span id="gewestplan"></span>
+                <br>
+                <span id="venGebied" style="display: none;"></span>
+                <span id="hagGebied" style="display: none;"></span>
+                <b>Overstromingsgevoeilg gebied: </b><span id="Overstromingsgevoeilg"></span>
+                <br>
+                <b>Erfgoed:</b> <span id="erfgoed">
+                </span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-1"></div>
+    
+    </div>
+</div>
+</div>
+</div>
+
+
+
+<!-- laad Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- laad Papa Parse library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+<!-- laad your custom JavaScript file -->
+<script src="js/app.js"></script>
+<!-- laad Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous">
+</script>
+
+
+
+
+</body>
+</html>
+
+<!--https://handsondataviz.org/leaflet-searchable-map.html-->

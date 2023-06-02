@@ -1,0 +1,211 @@
+/* Stijlen voor de kaart */
+#map {
+   background-color: rgba(250, 250, 250, 0);
+
+}
+
+/* Stijlen voor de kop van de kaart */
+
+.card-header {
+  background-color: #003cffc7;
+  color: #fff;
+}
+
+/* Stijlen voor marker clustering */
+
+.marker-cluster {
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	border-radius: 50%;
+	text-align: center;
+  }
+  
+  .marker-cluster div {
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	background-color: #3252a0;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .marker-cluster span {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  
+/* Stijlen voor radio-knoppen */
+
+  .btn-radio {
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+  }
+  
+  .btn-radio:not(:checked) {
+	color: #6c757d;
+	background-color: #fff;
+	border-color: #6c757d;
+  }
+  
+  .btn-radio:focus:not(:checked) {
+	box-shadow: none;
+  }
+  
+  .btn-radio:checked {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .btn-radio:focus:checked {
+	box-shadow: none;
+  }
+  
+  .btn-radio:active:not(:checked),
+  .btn-radio.active:not(:checked) {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .btn-radio:active:focus:not(:checked),
+  .btn-radio.active:focus:not(:checked) {
+	box-shadow: none;
+  }
+  
+  .btn-radio:checked:active,
+  .btn-radio:checked.active {
+	color: #fff;
+	background-color: #0062cc;
+	border-color: #005cbf;
+  }
+  
+  .btn-radio:checked:focus:active,
+  .btn-radio:checked:focus.active {
+	box-shadow: none;
+  }
+  .btn-radio:focus {
+	outline: none;
+  }
+  .btn-radio input[type="radio"] {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	pointer-events: none;
+	box-shadow: none;
+  }
+	  
+
+
+/* Stijlen voor afbeeldingen in de Leaflet pop-up inhoud */
+
+.leaflet-popup-content img {
+	max-width: 100%;
+	max-height: 150px;
+  }
+/* Stijlen voor de tabel-wrapper */
+
+.table-wrapper {
+max-height: 400px;
+overflow-y: auto;
+}
+.table-title {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+/* Stijlen voor de grafiek-wrapper */
+
+.chart-wrapper {
+max-height: 400px;
+overflow-y: auto;
+}
+
+/* Stijlen voor de erfgoed-tabel */
+
+.erfgoed-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 1em;
+	font-family: sans-serif;
+	line-height: 1.5;
+  }
+  
+  .erfgoed-table thead {
+	background-color: #fff;
+  }
+  
+  .erfgoed-table th,
+  .erfgoed-table td {
+	padding: 0.75em;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+  }
+  
+  .erfgoed-table th {
+	font-weight: bold;
+  }
+  
+  .erfgoed-table tbody tr:nth-child(even) {
+	background-color: #f8f8f8;
+  }
+  
+  
+  .erfgoed-table a {
+	color: #008cba;
+	text-decoration: none;
+	
+  }
+
+
+
+
+
+
+/* Stijlen voor de pop-up tabellen */
+
+  .popup-content {
+	max-height: 400px;
+	overflow-y: auto;
+  }
+  
+  .popup-content h3 {
+	margin-top: 0;
+  }
+  
+  .popup-content p {
+	margin-bottom: 10px;
+  }
+  
+  .popup-content img {
+	display: block;
+	margin: 10px auto;
+	max-width: 100%;
+	height: auto;
+  }
+  
+  .popup-content .description {
+	max-height: 200px;
+	overflow-y: auto;
+  }
+  
+  .popup-content table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  .popup-content th,
+  .popup-content td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: left;
+  }
+  
+  .popup-content th {
+	background-color: #f2f2f2;
+  }
