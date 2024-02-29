@@ -1,0 +1,334 @@
+/* Stijlen voor de kaart */
+#map {
+   background-color: rgba(250, 250, 250, 0);
+
+}
+
+/* Stijlen voor de kop van de kaart */
+
+.card-header {
+  background-color: #ff7b00c7;
+  color: #fff;
+}
+
+/* Stijlen voor marker clustering */
+
+.marker-cluster {
+	background-color: rgba(0, 0, 0, 0);
+	border: none;
+	border-radius: 50%;
+	text-align: center;
+  }
+ 
+  
+
+  .marker-cluster div {
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	background-color: #3252a0;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .marker-cluster span {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  
+/* Stijlen voor radio-knoppen */
+
+  .btn-radio {
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+  }
+  
+  .btn-radio:not(:checked) {
+	color: #6c757d;
+	background-color: #fff;
+	border-color: #6c757d;
+  }
+  
+  .btn-radio:focus:not(:checked) {
+	box-shadow: none;
+  }
+  
+  .btn-radio:checked {
+	color: #fff;
+	background-color: #ff7b00c7;
+	border-color: #ff7b00c7;
+  }
+  
+  .btn-radio:focus:checked {
+	box-shadow: none;
+  }
+  
+  .btn-radio:active:not(:checked),
+  .btn-radio.active:not(:checked) {
+	color: #fff;
+	background-color: #ff7b00c7;
+	border-color: #ff7b00c7;
+  }
+  
+  .btn-radio:active:focus:not(:checked),
+  .btn-radio.active:focus:not(:checked) {
+	box-shadow: none;
+  }
+  
+  .btn-radio:checked:active,
+  .btn-radio:checked.active {
+	color: #fff;
+	background-color: #ff7b00c7;
+	border-color: #ff7b00c7;
+  }
+  
+  .btn-radio:checked:focus:active,
+  .btn-radio:checked:focus.active {
+	box-shadow: none;
+  }
+  .btn-radio:focus {
+	outline: none;
+  }
+  .btn-radio input[type="radio"] {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	pointer-events: none;
+	box-shadow: none;
+  }
+	  
+  .btn-outline-success {
+    --bs-btn-color: #ff7b00c7;
+    --bs-btn-border-color: hsla(27, 100%, 50%, 0.78);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ff5e00d5;
+    --bs-btn-hover-border-color: #ff7b00c7;
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ff7b00c7;
+    --bs-btn-active-border-color: #ff7b00c7;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ff7b00c7;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #ff7b00c7;
+    --bs-gradient: none;
+}
+
+  .btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #ff7b00c7;
+    --bs-btn-border-color: #ff7b00c7;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #ff7b00c7;
+    --bs-btn-hover-border-color: #ff7b00c7;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ff7b00c7;
+    --bs-btn-active-border-color: #ff7b00c7;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #ff7b00c7;
+    --bs-btn-disabled-border-color: #ff7b00c7;
+}
+
+/* Stijlen voor afbeeldingen in de Leaflet pop-up inhoud */
+
+.leaflet-popup-content img {
+	max-width: 100%;
+	max-height: 150px;
+  }
+/* Stijlen voor de tabel-wrapper */
+
+.table-wrapper {
+max-height: 400px;
+overflow-y: auto;
+}
+.table-title {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+/* Stijlen voor de grafiek-wrapper */
+
+.chart-wrapper {
+max-height: 400px;
+overflow-y: auto;
+}
+
+/* Stijlen voor de erfgoed-tabel */
+
+.erfgoed-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 1em;
+	font-family: sans-serif;
+	line-height: 1.5;
+  }
+  
+  .erfgoed-table thead {
+	background-color: #fff;
+  }
+  
+  .erfgoed-table th,
+  .erfgoed-table td {
+	padding: 0.75em;
+	border-bottom: 1px solid #ddd;
+	text-align: left;
+  }
+  
+  .erfgoed-table th {
+	font-weight: bold;
+  }
+  
+  .erfgoed-table tbody tr:nth-child(even) {
+	background-color: #f8f8f8;
+  }
+  
+  
+  .erfgoed-table a {
+	color: #ff7b00c7;
+	text-decoration: none;
+	
+  }
+
+
+
+
+
+
+/* Stijlen voor de pop-up tabellen */
+
+  .popup-content {
+	max-height: 400px;
+	overflow-y: auto;
+  }
+  
+  .popup-content h3 {
+	margin-top: 0;
+  }
+  
+  .popup-content p {
+	margin-bottom: 10px;
+  }
+  
+  .popup-content img {
+	display: block;
+	margin: 10px auto;
+	max-width: 100%;
+	height: auto;
+  }
+  
+  .popup-content .description {
+	max-height: 200px;
+	overflow-y: auto;
+  }
+  
+  .popup-content table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  .popup-content th,
+  .popup-content td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: left;
+  }
+  
+  .popup-content th {
+	background-color: #f2f2f2;
+  }
+
+
+/* knop voor de toeveogen aan de vergelijkingslijst */
+
+  .vergelijk-knop {
+    background-color: #ff7b00c7; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+  }
+
+/* lijst vergelijkingspunten */
+
+/* Container voor elke slider sectie */
+.slider-container {
+  width: 85%; /* Breedte van de slider container */
+  
+}
+
+/* Slider titels */
+.marginal {
+  margin-bottom: 10px; /* Ruimte tussen titel en slider */
+}
+
+/* Slider basis stijl */
+.noUi-target  {
+  background-color: #E9E9E9; 
+  height: 4px; /* Minder hoog voor een slanker uiterlijk */
+  border-radius: 2px;
+} 
+
+/* Slider handvat stijl */
+.noUi-handle {
+  width: 25px  ! important;
+  height: 25px  ! important;
+  border-radius: 50%! important;
+  top: -5px  ! important;
+  background-color: #ffffffc7;
+    border: 1px solid #D3D3D3 ! important; /* Subtiele rand voor diepte */
+}
+
+/* Actieve slider gedeelte stijl */
+.noUi-connect {
+  background-color: #ff7b00c7 ! important;
+}
+
+/* Waarde indicatie stijl */
+#kiValue, #oppValue {
+  color: #000000;
+  font-weight: normal;
+  margin-top: 10px;
+}
+
+.noUi-handle::before,
+.noUi-handle::after {
+    content: none !important;
+}
+
+
+
+.range-container {
+  margin-bottom: 20px;
+}
+
+.range-container label {
+  display: block;
+  margin-top:20px ;
+  margin-bottom: 5px;
+}
+
+.range-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.range-inputs input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
